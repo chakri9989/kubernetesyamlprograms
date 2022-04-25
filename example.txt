@@ -1,3 +1,0 @@
-this is my kubernetes yaml programs
-don't worry baby
-
