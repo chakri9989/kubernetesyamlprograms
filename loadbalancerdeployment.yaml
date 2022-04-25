@@ -1,0 +1,32 @@
+
+# vi loaddepolyment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-load-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: products
+      department: scale
+  template:
+    metadata:
+      labels:
+        app: products
+        department: scale
+    spec:
+      containers:
+      - name: my-load-container
+        image: nginx
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 50001
+        env:
+          - name: "port"
+            value: "50001"
+# kubectl apply -f deployment.yaml
+# kubectl get pods

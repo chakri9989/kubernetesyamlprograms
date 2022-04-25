@@ -1,0 +1,22 @@
+# vi nodeportservice.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-nodeport
+spec:
+  type: NodePort
+  selector:
+    app: metrics
+    department: engineering
+  ports:
+  - name: nodeport-ports
+    port: 80
+    targetPort: 50000
+    nodePort: 8080
+# kubectl apply -f nodeport.yaml
+# kubectl get Services
+# kubectl get nodes --output wide
+# kubectl get service my-nodeport --output yaml
+#note: allow the firewall rule for port 8080
+#access a service 
+#Open browser and type node-IPaddrees:8080

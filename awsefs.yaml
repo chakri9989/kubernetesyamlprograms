@@ -1,0 +1,16 @@
+#vi awsefs.yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: my-efs-share
+spec:
+  capacity:
+    storage: 200Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  nfs:
+    path: /tmp
+    server: efs-70f37d75s7g8s
+# kubectl apply -f awsefs.yaml
+# kubectl get pv

@@ -1,0 +1,7 @@
+#vi namespace.yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: test-ns
+# kubectl apply -f namespace.yaml
+#kubectl get namesapces

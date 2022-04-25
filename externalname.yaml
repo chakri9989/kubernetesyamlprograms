@@ -1,0 +1,10 @@
+#vi externalname.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-xn-service
+spec:
+  type: ExternalName
+  externalName: example.com
+
+  

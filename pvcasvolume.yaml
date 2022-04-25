@@ -1,0 +1,25 @@
+#vi pvcasvolume.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp
+spec:
+  containers:
+  - name: myapp
+    image: nginx
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 80
+    volumeMounts:
+      - name: pvc-volume
+        mountPath: "/mnt/data"
+  volumes:
+    - name: pvc-volume
+      persistentVolumeClaim:
+        claimName: my-pvc
+
+#kubectl create -f pvcasvolume.yaml
+#kubectl get pods

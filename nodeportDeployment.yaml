@@ -1,0 +1,29 @@
+#vi nodeportdeployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-nodeport-Deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: metrics
+      department: engineering
+  template:
+    metadata:
+      labels:
+        app: metrics
+        department: engineering
+    spec:
+      containers:
+      - name: my-nodeport-container
+        image: nginx
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        env:
+          - name: "port"
+            value: "50000"
+# kubectl apply -f nodeport.yaml
+# kubectl get pods

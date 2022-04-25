@@ -1,0 +1,28 @@
+#vi 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myheadlessdeploy
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: running
+      department: delivery
+  template:
+    metadata:
+      labels:
+        app: running
+        department: delivery
+    spec:
+      containers:
+      - name: myheadlessniginx
+        image: nginx
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+# kubectl create -f headlessdeployment.yaml
+# kubectl get pods

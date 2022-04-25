@@ -1,0 +1,12 @@
+#vi storageclass.yaml
+apiVersion: v1
+kind: storageClass
+metadata:
+  name: ebs-classname
+provisioner: kubernetes.io/aws-ebs
+parameters:
+  type: po1
+  iopsPerGB: "10"
+  fstype: "ext4"
+#kubectl apply -f storageclass.yaml
+#kubectl get storageclasses

@@ -1,0 +1,20 @@
+# vi podusingnamespace
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapppod
+  namespace: my-namespace
+  labels:
+    name: myapppod
+spec:
+  containers:
+  - name: myapppod
+    image: nginx
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 80
+# kubectl apply -f podusingnamespace.yaml
+# kubectl get pod -n my-namespace

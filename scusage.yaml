@@ -1,0 +1,15 @@
+
+#vi scusage.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mypvc
+spec:
+  resources:
+    requests:
+      storage: 80Gi
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ebs-classname
+  #kubectl apply -f scusage.yaml
+  #kubectl get pvc

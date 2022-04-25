@@ -1,0 +1,20 @@
+# vi clusterip.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-clusterip
+spec:
+  type: ClusterIP
+  selector:
+    app: metrics
+    department: sales
+  ports:
+  - name: ClusterIP-Ports
+    protocol: TCP
+    port: 8080
+    targetPort: 80
+# kubectl apply -f clusterip.yaml
+# kubectl get services
+# kubectl get my-clusterip --output yaml
+# kubectl get pods
+# kubectl exec --it myapp --/bin/sh

@@ -1,0 +1,17 @@
+#vi loadbalancerservice.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-load-service
+spec:
+  type: LoadBalancer 
+  selector:
+    app: products
+    department: scale
+  ports:
+  - name: LoadBalancer-ports
+    port: 60000
+    targetPort: 50001
+    nodePort: 50000
+# kubectl apply -f loadbalancer.yaml
+# kubectl get service my-load-service --output yaml

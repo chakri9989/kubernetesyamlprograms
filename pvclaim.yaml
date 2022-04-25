@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-pvc
+  annotations:
+    value.beta.kubernetes.io/storage-class: "normal"
+spec:
+  resources:
+    requests:
+      storage: 80Gi
+  accessModes:
+    - ReadWriteOnce
+  selector:
+    matchLabels:
+      release: "stable"
+    matchExpressions:
+      - {key: capacity, operator: In, volumes: [80Gi, 100Gi]}

@@ -1,0 +1,28 @@
+# vi clusteripdeployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: metrics
+      department: sales
+  template:
+    metadata:
+      labels:
+        app: metrics
+        department: sales
+    spec:
+      containers:
+      - name: my-clusterip-pod
+        image: nginx
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+# kubectl apply -f clusteripdeployment.yaml
+# kubectl get pods

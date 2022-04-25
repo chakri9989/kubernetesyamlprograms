@@ -1,0 +1,20 @@
+#vi headless.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-headless-ip
+spec:
+  type: ClusterIP
+  clusterIP: None
+  selector:
+    app: running
+    department: delivery
+  ports:
+  - name: headless-service-ports
+    port: 8080
+    targetPort: 80
+# kubectl create -f headless.yaml
+# kubectl pod service my-headless-ip --output yaml
+# kubectl describe service my-headless-ip
+# kubectl get pods --output wide
+# kubectl delete pvc my-headless

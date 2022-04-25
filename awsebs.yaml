@@ -1,0 +1,28 @@
+#vi awsebs.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: aws-ebs-pod
+  labels:
+    name: myapp
+spec:
+  containers:
+  - name: aws-ebs-example
+    image: nginx
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 80
+    volumeMounts:
+      - name: first-ebs
+        mountPath: /ebs
+  volumes:
+    - name: first-ebs
+      awsElasticBlockStore:
+        volumeID: vol-068cb610aa7e357a7
+        fsType: ext4
+#kubectl apply -f awsebs.yaml
+#kubectl get pods
+#kubectl get pv
